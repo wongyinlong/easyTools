@@ -1,8 +1,11 @@
 import requests
 import base64
+import time
+
 from io import BytesIO
 from bs4 import BeautifulSoup
 from PIL import Image
+
 url = "https://www.youneed.win/free-ssr"
 #url = "http://www.baidu.com"
 ssrDir = "C:\myProgramFiles\ShadowsocksR-4.7.0"  # ssr 目录，windows下
@@ -49,12 +52,19 @@ def getList(content):
         ssr = item.find("a").get("data")
         print(ssr)
         ssrs.append(ssr)
-    return
+    return ssrs
 
 
-def writToFile():
+def writToFile(ssrs):
     # 写到文件
-
+    t = time.localtime()
+    
+    file_name = "./"+str(t.tm_year)+str(t.tm_mon)+str(t.tm_mday)+str(t.tm_hour)+str(t.tm_min)+str(t.tm_sec)+".txt"
+    f = open(file_name, "w+") 
+    for i in ssrs:
+        f.write(i) 
+        f.write("\n")
+    f.close()
 
 
 # def SSR(listSSR):
@@ -74,7 +84,12 @@ if __name__ == "__main__":
     '''
     content = getContent()
     ssr_list = getList(content)
-
+    writToFile(ssr_list)
 """
 3-05可以用了，白天把写文件写咯，其他功能再说吧。
 """
+
+
+# -TODO: 添加功能，从其他网站获取ssr 和ss 以及v2ray.并输出xls表格(在控制台输出)初次使用需要进行配置，
+# 配置选项为两个，1是否开启代理（自己获取网上的免费代理做），2获取代理类型，有ssr，ss，v2ray
+# 使用python多线程做。多网站进行map reduce操作。
