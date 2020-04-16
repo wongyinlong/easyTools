@@ -2,6 +2,9 @@ import requests
 import base64
 import time
 
+"""
+ 该文件可以独立运行，获取某个网站的信息， 功能单一，正在更改。
+"""
 from io import BytesIO
 from bs4 import BeautifulSoup
 from PIL import Image
