@@ -3,77 +3,57 @@ import configparser
 import os
 import time
 
+proxyListDir = "./proxy.list"
+aimWebSit = "https://twitter.com"
+proxyWebSits = [
+    "https://www.website1.com"
+    "https://www.website1.com"
+]
 
-def createConfigFile(c):
+total = 20  # 代理数量
+ping = 100   # 代理延迟低于100ms
 
-    ProxySwitch = "on"
-    ProxyList = ["ssr","v2ray","ss"]
+def getProxyFormWebSite():
+    """
+    从网站获取代理，并检测是否可用
+    """
+    pass
 
+def writeProxyToFile():
+    """
+    写代理到文件
+    """
+    pass
 
-    print("是否从网络上自动获取http代理爬虫。 过程可能会比较长，处理速度和代理有关系。")
-    print("1 不需要，我有代理。")
-    print("2 需要哦。")
-    print("回车键默认配置。")
-    while True:
-        proxyChoose = input()
-        if proxyChoose == "1":
-            ProxySwitch = "off"
-            break
-        if proxyChoose == "2":
-            break
-        if proxyChoose == "":
-            break
-        print("请重新输入，1 自动获取代理， 2 不获取代理")
-
-    print("请选择需要获取的代理类型。可多选")
-    print("1 SSR")
-    print("2 V2ray")
-    print("3 SS")
-    print("回车键默认配置。")
-    while True:
-        typeChoose = input()
-        typeChoose = list(set(typeChoose))
-        tempType = []
-        if len(typeChoose) == 0:
-            break
-        if len(typeChoose) > 3:
-            print("请重新输入,")
-            continue
-        if 3>=len(typeChoose) >0 :
-             for i in typeChoose:
-                 if i =="1":
-                        tempType.append("ssr")
-                 if i =="2":
-                        tempType.append("v2ray")
-                 if i =="3":
-                        tempType.append("ss")
-        if len(tempType) == 0:
-            print("请重新输入")
-            continue
-        ProxyList = tempType
-        break
- 
-
-    print("选择结果是，代理列表:",ProxyList)
-    print("选择结果是，代理开启:",ProxySwitch)
-  
-            
-
-def readConfig(c):
+def readProxyFromFile():
+    """
+    读代理从文件
+    """
+    pass
+                
+def checkProxy():
+    """
+    检查代理
+    """
     pass
 
 
 
 if __name__ == "__main__":
     '''
-    检查配置文件
-    生成配置文件
-    程序入口
+    检查本地文件 proxy.list
+    如果没有则从网上获取httpsProxy，socks5Proxy。
+    获取20个写入文件
     :( 我傻叉了，刚才定义变量写成golang 的方式了。Orz  
     '''
-    conf = configparser.ConfigParser()
-    if not os.path.exists("./config/conf.ini"):
-        print("初次使用，生成配置文件")
-        time.sleep(0.5)
-        createConfigFile(conf)
-    readConfig(conf)
+    proxyListFileExist =  os.path.exists(proxyListDir)
+    if proxyListFileExist:
+        # 读文件到代理列表
+        pass
+    # 开始检查代理列表，并计数
+    # 代理列表长度是否大于等于20(total)
+    # 若不足够，则从网页上获取
+    # 写入代理到文件
+    # 开始多线程
+
+

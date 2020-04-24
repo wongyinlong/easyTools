@@ -3,7 +3,7 @@ import base64
 import time
 
 """
- 该文件可以独立运行，获取某个网站的信息， 功能单一，正在更改。
+ 该文件可以独立运行，获取某个网站的信息， 功能单一，正在更改。(需要使用代理才能访问)
 """
 from io import BytesIO
 from bs4 import BeautifulSoup
