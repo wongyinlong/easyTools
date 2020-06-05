@@ -2,7 +2,8 @@
 import configparser
 import os
 import time
-
+import requests
+import urllib
 proxyListDir = "./proxy.list"
 aimWebSit = "https://twitter.com"
 proxyWebSits = [
@@ -12,7 +13,9 @@ proxyWebSits = [
 
 total = 20  # 代理数量
 ping = 100   # 代理延迟低于100ms
-
+httpProxy = []
+# socks5Proxy = []
+# socks4Proxy = []
 def getProxyFormWebSite():
     """
     从网站获取代理，并检测是否可用
@@ -37,8 +40,10 @@ def checkProxy():
     """
     pass
 
-
-
+def goCheckProxy():
+    pass
+def run():
+    pass
 if __name__ == "__main__":
     '''
     检查本地文件 proxy.list
@@ -48,12 +53,17 @@ if __name__ == "__main__":
     '''
     proxyListFileExist =  os.path.exists(proxyListDir)
     if proxyListFileExist:
-        # 读文件到代理列表
-        pass
+        with open(proxyListDir,"r") as f:
+           proxys =f.readlines()
+    for proxy in proxys:
+        httpProxy.append(proxy.strip("\n"))
+
+    checkProxy()
     # 开始检查代理列表，并计数
     # 代理列表长度是否大于等于20(total)
     # 若不足够，则从网页上获取
     # 写入代理到文件
     # 开始多线程
+
 
 
